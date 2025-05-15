@@ -1,0 +1,16 @@
+name: CI
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run API tests
+        run: |
+          pip install -r api-testing/python/requirements.txt
+          pytest api-testing/python/
+      - name: Run UI tests
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: pytest ui-testing/selenium-python/
