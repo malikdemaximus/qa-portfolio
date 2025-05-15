@@ -1,0 +1,20 @@
+name: Postman Tests
+on: [push]
+
+jobs:
+  postman:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Newman
+        run: npm install -g newman
+      - name: Run Tests
+        run: |
+          newman run api-testing/postman/collections/ReqRes_API.postman_collection.json \
+            -e api-testing/postman/environments/ReqRes_Env.postman_environment.json \
+            --reporters cli,json \
+            --reporter-json-export newman-report.json
+      - uses: actions/upload-artifact@v3
+        with:
+          name: postman-report
+          path: newman-report.json
