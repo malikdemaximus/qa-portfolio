@@ -1,0 +1,12 @@
+name: Weekly Smoke Tests
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Каждый понедельник в 09:00
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          pytest ui-testing/selenium-python/ -m "smoke"
