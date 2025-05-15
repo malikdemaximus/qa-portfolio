@@ -1,0 +1,42 @@
+{
+  "info": {
+    "name": "ReqRes API Tests",
+    "description": "Тесты для https://reqres.in/",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "GET User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://reqres.in/api/users/{{user_id}}",
+              "host": ["https://reqres.in"],
+              "path": ["api", "users", "{{user_id}}"]
+            }
+          },
+          "response": [
+            {
+              "name": "Valid Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://reqres.in/api/users/2",
+                  "host": ["https://reqres.in"],
+                  "path": ["api", "users", "2"]
+                }
+              },
+              "code": 200,
+              "body": "{\n    \"data\": {\n        \"id\": 2,\n        \"email\": \"janet.weaver@reqres.in\",\n        \"first_name\": \"Janet\",\n        \"last_name\": \"Weaver\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
